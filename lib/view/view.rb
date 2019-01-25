@@ -37,4 +37,13 @@ attr_accessor :J1, :J2, :params
  	  gets.chomp.upcase #histoire d'avoir les lettre en maj
   end
 
+  def winner(which_one)
+  	puts "bravo Marcel, enfin #{which_one} je veux dire, tu as gagné"
+  end
+
+  def loosers
+  	puts "personne n'a gagné"
+  end
+
+
 end

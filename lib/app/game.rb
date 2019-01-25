@@ -2,7 +2,13 @@
 
 class Games
 
-  attr_accessor :j1, :j2, :j1m, :j2m, :starter, :cases_played, :acase, :player, :turn
+  attr_accessor :j1, :j2, :j1m, :j2m, :starter, :cases_played, :acase, :player, :turn, :winner
+
+  attr_reader :win_combi
+
+  @@win_combi = [["A1", "A2", "A3"], ["B1", "B2", "B3"], ["C1", "C2", "C3"], ["A1", "B1", "C1"], ["A2", "B2", "C2"], ["A3", "B3", "C3"], ["A1", "B2", "C3"], ["C1", "B2", "A3"]]
+
+
 
   def initialize(j1_name, j2_name)
   	@turn = 0
@@ -14,6 +20,7 @@ class Games
   	@player = Array.new
   	@starter = Array.new
   	@cases_played = Array.new
+  	@winner = nil
 
     #who start?
     s = rand(1..2) 
@@ -70,20 +77,63 @@ cases_allready_played_copy = cases_allready_played + ["#{case_sized}"]
 
   #maintenant que la acase est vérifier, faut faire les modifs
   def do_the_turn(just_played_case, game_var)
-  	binding.pry
-		game_var.cases_played << just_played_case
-		@j1="yaya",
-		@j2="beber",
-		game_var.turn += 1
+		cases_played << just_played_case
+		@turn += 1
 
-		case game_var.player
-		when game_var.j1
-			game_var.j1m << just_played_case
-		when game_var.j2
-			game_var.jm2 << just_played_case
+  	binding.pry
+		case player
+		when j1
+			j1m << just_played_case
+		when j2
+			j2m << just_played_case
 		end
+  end
+
+  # must return un hash avec  true, false
+  def does_someone_win
+#binding.pry
+    @@win_combi.each do |combi|
+	   	case player
+			when j1
+				#binding.pry
+				combi_checker(combi, @j1m, @j1)
+			when j2
+	      combi_checker(combi, @j2m, @j2)
+	    end
+	  end
+    if @winner != nil
+    	return true
+    else
+    	return false
+    end
 
   end
+
+  def combi_checker(combinaison, cases_played, player)
+
+  	#binding.pry
+  	combinaison_copy = Array.new
+  	combinaison_copy << combinaison 
+  	combinaison_copy << cases_played
+  	combinaison_copy.uniq!
+  	if combinaison_copy.length == 3
+  		binding.pry
+  		@winner = player
+  	end
+
+  end
+ 
+  def changing_player(j1, j2, player)
+    temp = player
+  	binding.pry
+    if temp == j1
+  	  player = j2
+    else
+  	  player = j1
+    end
+
+  end
+
 
 # fin de class
 end
