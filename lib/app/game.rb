@@ -125,11 +125,12 @@ cases_allready_played_copy = cases_allready_played + ["#{case_sized}"]
  
   def changing_player(j1, j2, player)
     temp = player
-  	binding.pry
+  	#binding.pry
     if temp == j1
-  	  player = j2
+  	  @player = j2
     else
-  	  player = j1
+  	  @player = j1
+  	  binding.pry
     end
 
   end

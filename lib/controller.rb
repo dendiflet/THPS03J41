@@ -36,12 +36,11 @@ class Controller
       @new_game.do_the_turn(good_imput[:case_just_played_ok], @new_game)
 
       won = @new_game.does_someone_win #(@new_game)
-       puts "je suis passé"
+    
       if won == true
         @interface.winner(@new_game.winner)
       end
-      	puts "ici aussi"
-
+      
       @new_game.changing_player(@new_game.j1, @new_game.j2 , @new_game.player)
 
     #while turn 9 end
