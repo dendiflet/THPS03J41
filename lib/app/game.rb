@@ -80,7 +80,7 @@ cases_allready_played_copy = cases_allready_played + ["#{case_sized}"]
 		cases_played << just_played_case
 		@turn += 1
 
-  	binding.pry
+  	#binding.pry
 		case player
 		when j1
 			j1m << just_played_case
@@ -111,12 +111,14 @@ cases_allready_played_copy = cases_allready_played + ["#{case_sized}"]
 
   def combi_checker(combinaison, cases_played, player)
 
-  	#binding.pry
   	combinaison_copy = Array.new
   	combinaison_copy << combinaison 
-  	combinaison_copy << cases_played
-  	combinaison_copy.uniq!
-  	if combinaison_copy.length == 3
+  	combinaison_copy.flatten!
+
+  	intersection = combinaison_copy - cases_played
+
+  	#binding.pry
+  	if intersection.empty?
   		binding.pry
   		@winner = player
   	end
@@ -130,7 +132,7 @@ cases_allready_played_copy = cases_allready_played + ["#{case_sized}"]
   	  @player = j2
     else
   	  @player = j1
-  	  binding.pry
+  	  #binding.pry ### ok
     end
 
   end

@@ -22,7 +22,7 @@ class Application
 
 ####### pour les tests choice = 1
 
-			choice =  gets.chomp.to_i
+			choice = 1 # gets.chomp.to_i
 
 			# ici la redirection en fonction du choix
 			case choice
