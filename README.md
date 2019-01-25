@@ -8,8 +8,3 @@ si tu vois cette phrase, c'est que ce fichier a été créer automatiquement
 		ceci est la V2, trop de debuggins sur la V1 ...
 
 		dernier push a 6h du matin, readme fait ensuite
-
-
-
-
-ca toune, c'est moche mais c'est "jouable".
